@@ -13,40 +13,85 @@
   <link rel="stylesheet" href="/assets/css/nav.css?v=01" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6840529569014734"
     crossorigin="anonymous"></script>
+  <style>
+    #login-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    #main-content {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="center" onload="SplashT">
-  <div class="f-nav"></div>
-  <div id="particles-js">
-    <script rel="preload" src="https://cdn.jsdelivr.net/particles.js/2.0.0/"></script>
-    <div class="main">
-      <h1 class="title">&#73;&#110;&#116;&#101;&#114;&#115;&#116;&#101;&#108;&#108;&#97;&#114;</h1>
-      <p id="splash"></p>
-      <div class="search-container">
-        <form id="fv" method="POST">
-          <input id="iv" class="search-home" placeholder="Search or enter a URL" type="text" />
-        </form>
+  <!-- LOGIN SCREEN -->
+  <div id="login-box">
+    <h2>Login to Mathspace</h2>
+    <input id="username" placeholder="Username"><br>
+    <input id="password" type="password" placeholder="Password"><br>
+    <button onclick="checkLogin()">Login</button>
+    <p id="error" style="color:red;"></p>
+  </div>
+
+  <!-- MAIN SITE -->
+  <div id="main-content">
+    <div class="f-nav"></div>
+    <div id="particles-js">
+      <script rel="preload" src="https://cdn.jsdelivr.net/particles.js/2.0.0/"></script>
+      <div class="main">
+        <h1 class="title">&#73;&#110;&#116;&#101;&#114;&#115;&#116;&#101;&#108;&#108;&#97;&#114;</h1>
+        <p id="splash"></p>
+        <div class="search-container">
+          <form id="fv" method="POST">
+            <input id="iv" class="search-home" placeholder="Search or enter a URL" type="text" />
+          </form>
+        </div>
       </div>
     </div>
+    <script src="assets/js/005.js?v=000"></script>
+    <script src="/assets/js/004.js?v=000"></script>
+    <script src="./assets/mathematics/bundle.js?v=2025-04-15"></script>
+    <script src="./assets/mathematics/config.js?v=2025-04-15"></script>
+    <script src="assets/js/003.js?v=000"></script>
+    <script src="/assets/js/001.js?v=001"></script>
+    <!-- DO NOT REMOVE-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKJQ5QHQTJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
+      gtag("config", "G-WKJQ5QHQTJ")
+    </script>
+    <!-- DO NOT REMOVE-->
   </div>
-  <script src="assets/js/005.js?v=000"></script>
-  <script src="/assets/js/004.js?v=000"></script>
-  <script src="./assets/mathematics/bundle.js?v=2025-04-15"></script>
-  <script src="./assets/mathematics/config.js?v=2025-04-15"></script>
-  <script src="assets/js/003.js?v=000"></script>
-  <script src="/assets/js/001.js?v=001"></script>
-  <!-- DO NOT REMOVE-->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKJQ5QHQTJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || []
-    function gtag() {
-      dataLayer.push(arguments)
-    }
-    gtag("js", new Date())
 
-    gtag("config", "G-WKJQ5QHQTJ")
+  <!-- LOGIN SCRIPT -->
+  <script>
+    const encodedUsername = "bWF0aHNwYWNl"; // "mathspace"
+    const encodedPassword = "c2lsdmVyLW1hbmdvLXRyYWNrLTM4NDI="; // "silver-mango-track-3842"
+
+    function decode(str) {
+      return atob(str);
+    }
+
+    function checkLogin() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (user === decode(encodedUsername) && pass === decode(encodedPassword)) {
+        document.getElementById("login-box").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      } else {
+        document.getElementById("error").textContent = "Wrong username or password.";
+      }
+    }
   </script>
-  <!-- DO NOT REMOVE-->
 </body>
 
 </html>
